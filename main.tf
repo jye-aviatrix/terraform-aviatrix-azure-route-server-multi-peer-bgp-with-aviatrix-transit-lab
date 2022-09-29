@@ -1,6 +1,7 @@
 resource "azurerm_resource_group" "this" {
   name     = var.resource_group_name
   location = var.region
+  tags = var.tags
 }
 
 resource "azurerm_virtual_network" "ars_vng" {
@@ -8,6 +9,7 @@ resource "azurerm_virtual_network" "ars_vng" {
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
   address_space       = ["10.0.10.0/24"]
+  tags = var.tags
 
   subnet {
     name           = "RouteServerSubnet"
@@ -17,9 +19,5 @@ resource "azurerm_virtual_network" "ars_vng" {
   subnet {
     name           = "GatewaySubnet"
     address_prefix = "10.0.10.128/25"
-  }
-
-  tags = {
-    environment = "Production"
   }
 }

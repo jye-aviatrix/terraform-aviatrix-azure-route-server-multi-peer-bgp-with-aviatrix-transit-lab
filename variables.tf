@@ -7,3 +7,11 @@ variable "region" {
   type = string
   description = "Provide region of the resources"
 }
+
+variable "tags" {
+  type = map
+  description = "Provide tags for resources"
+  default = {
+    Name = "ars-multi-peer-bgp-with-avx-transit-lab"
+  }
+}
