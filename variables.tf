@@ -1,11 +1,13 @@
 variable "resource_group_name" {
   type = string
   description = "Provide Resource Group Name"
+  default = "ars-bgp-multipeer-avx-transit-lab"
 }
 
 variable "region" {
   type = string
   description = "Provide region of the resources"
+  default = "East US"
 }
 
 variable "tags" {
