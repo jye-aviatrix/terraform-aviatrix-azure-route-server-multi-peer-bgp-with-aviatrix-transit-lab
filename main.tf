@@ -262,6 +262,10 @@ resource "aviatrix_transit_external_device_conn" "transit_2_to_vng" {
   local_tunnel_cidr = "${var.avx_primary_tunnel_ip}/30,${var.avx_ha_tunnel_ip}/30"
   remote_tunnel_cidr = "${var.vng_primary_tunnel_ip}/30,${var.vng_ha_tunnel_ip}/30"
   pre_shared_key = random_string.psk.result
+  depends_on = [
+    azurerm_virtual_network_peering.transit_1_to_vng,
+    azurerm_virtual_network_peering.vng_to_transit_1
+  ]
 }
 
 
