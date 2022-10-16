@@ -30,12 +30,6 @@ variable "vng_name" {
   default = "vng"
 }
 
-variable "vng_asn" {
-  type = number
-  description = "Provide ASN for Azure VPN Gateway"
-  default = 65010  
-}
-
 
 variable "vng_primary_tunnel_ip" {
   type = string

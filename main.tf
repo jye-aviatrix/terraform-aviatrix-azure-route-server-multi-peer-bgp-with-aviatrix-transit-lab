@@ -136,7 +136,7 @@ resource "azurerm_virtual_network_gateway" "this" {
   generation = "Generation2"
 
   bgp_settings {
-    asn         = var.vng_asn
+    asn         = azurerm_route_server.ars.virtual_router_asn
     peer_weight = 0
 
     peering_addresses {
