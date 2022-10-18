@@ -2,6 +2,13 @@
 
 This module create a lab environment, intergrating Azure Router Server with Aviatrix Transit via BGP multi-peer. Then use VPN Gateway to establish BGP over IPSec connection with OnPrem to exchange routes
 
+## Known issue
+There is a timing issue that may generate following error:
+```
+Error: failed to create Aviatrix transit external device connection: rest API connect_transit_gw_to_external_device Post failed: [AVXERR-TRANSIT-0172] Please create Azure VNET peering btween transit-1:ars-bgp-multipeer-avx-transit-lab:<guid> and ars-vng-network:ars-bgp-multipeer-avx-transit-lab:<guid>.
+```
+I've tried to introduce 120 seconds delay after the vNet peering, but still may not be enough for some. Just run terraform apply the second time and it should work.
+
 ## Architecture diagram
  ![Architecture diagram](20221018125654.png)  
 
