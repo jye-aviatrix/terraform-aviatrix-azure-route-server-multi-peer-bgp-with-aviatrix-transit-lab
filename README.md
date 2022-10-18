@@ -10,7 +10,7 @@ Error: failed to create Aviatrix transit external device connection: rest API co
 I've tried to introduce 120 seconds delay after the vNet peering, but still may not be enough for some. Just run terraform apply the second time and it should work.
 
 ## Architecture diagram
- ![Architecture diagram](20221018125654.png)  
+ ![Architecture diagram](./20221018125654.png)  
 
 ## Blog
 [Azure Route Server BGP multi-peer with Aviatrix Transit](https://cloudlearning365.com/?p=744)
