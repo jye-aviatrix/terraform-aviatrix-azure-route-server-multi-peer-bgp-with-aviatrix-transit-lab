@@ -2,7 +2,11 @@
 
 This module create a lab environment, intergrating Azure Router Server with Aviatrix Transit via BGP multi-peer. Then use VPN Gateway to establish BGP over IPSec connection with OnPrem to exchange routes
 
+## Architecture diagram
+ ![Architecture diagram](20221018125654.png)  
 
+## Blog
+[Azure Route Server BGP multi-peer with Aviatrix Transit](https://cloudlearning365.com/?p=744)
 ## Tested environment
 - Terraform v1.2.8
 - provider registry.terraform.io/aviatrixsystems/aviatrix v2.24.1
