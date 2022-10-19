@@ -251,13 +251,13 @@ resource "azurerm_virtual_network_gateway_connection" "ha" {
 
 
 # Add delay wait for vNet peering to complete.
-resource "time_sleep" "wait_120_seconds" {
+resource "time_sleep" "wait_60_seconds" {
   depends_on = [
     azurerm_virtual_network_peering.transit_1_to_vng,
     azurerm_virtual_network_peering.vng_to_transit_1
   ]
 
-  create_duration = "120s"
+  create_duration = "60s"
 
 }
 
@@ -275,9 +275,6 @@ resource "aviatrix_transit_external_device_conn" "transit_2_to_vng" {
   local_tunnel_cidr  = "${var.avx_primary_tunnel_ip}/30,${var.avx_ha_tunnel_ip}/30"
   remote_tunnel_cidr = "${var.vng_primary_tunnel_ip}/30,${var.vng_ha_tunnel_ip}/30"
   pre_shared_key     = random_string.psk.result
-  depends_on = [
-    time_sleep.wait_120_seconds
-  ]
 }
 
 
@@ -328,6 +325,9 @@ resource "aviatrix_transit_external_device_conn" "transit_1_to_ars" {
   backup_remote_lan_ip     = tolist(azurerm_route_server.ars.virtual_router_ips)[1]
 
   enable_bgp_lan_activemesh = true
+  depends_on = [
+    time_sleep.wait_60_seconds
+  ]
 
 }
 
